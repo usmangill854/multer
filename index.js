@@ -9,8 +9,17 @@ const multer = require('multer')
 //     try{await }
 // }
 const upload = multer( {
-    dest : 'upload'
+    dest : 'upload',
+    limits:{
+        filesize:1000000
+    },
+    fileFilter(req,file,cb){
+    if(file.originalname.endsWith('.jpg'))
+    return cb(null,true)
+    cb(new Error('file formate is in correct'))
+    }
 } )
+
 app.post('/upload',upload.single('upload'),async (req,res) =>{
     res.send()
 })
