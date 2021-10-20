@@ -11,7 +11,7 @@ const multer = require('multer')
 const upload = multer( {
     dest : 'upload',
     limits:{
-        filesize:100000
+        filesize:1000000
     },
     fileFilter(req,file,cb){
     if(file.originalname.endsWith('.jpg'))
